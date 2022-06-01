@@ -27,6 +27,12 @@ This page shows how to create your first Scaleway Instance. An [Instance](/compu
 
 ## How to create an Instance
 
+<Codes id="createinstance">
+
+<CodesTab>
+
+CONSOLE
+
 1. Click **Instances** in the **Compute** section of the side menu. The Instance creation page displays.
 
   <Lightbox src="scaleway-instance-creation-page.webp" alt="" />
@@ -77,7 +83,60 @@ This page shows how to create your first Scaleway Instance. An [Instance](/compu
 
 Your Instance is now created and you are redirected to the **Overview** tab. From here, you can see information including your Instance's Public IP, the SSH command to use to [connect to it](/compute/instances/how-to/create-an-instance/), and other information, settings, and actions for the Instance.
 
-<Lightbox src="scaleway-instance-overview.webp" alt="" />
+</CodesTab>
+
+<CodesTab>
+
+API
+
+The following command and request body creates an Instance via the API using `curl`.
+
+You need to replace `{zone}` in the URL with the desired zone, and the various placeholder values in the payload (`"string"`, `"boolean"` etc) with the desired values, according to the type of Instance you want to create. See the dedicated section of the [API reference](https://developers.scaleway.com/en/products/instance/api/#post-7482b1) for full details.
+
+```json
+
+curl -H 'X-Auth-Token: $SECRET_KEY' -H 'Content-Type: application/json' \
+https://api.scaleway.com/instance/v1/zones/{zone}/servers -d \
+'{
+  "name": "string", \
+  "dynamic_ip_required": "boolean", \
+  "commercial_type": "string", \
+  "image": "string", \
+  "volumes": { \
+    "<volumeKey>": { \
+      "id": "string", \
+      "boot": "boolean", \
+      "name": "string", \
+      "size": 42, \
+      "volume_type": "l_ssd", \
+      "base_snapshot": "string", \
+      "organization": "string", \
+      "project": "string" \
+    } \
+  }, \
+  "enable_ipv6": "boolean", \
+  "public_ip": "string", \
+  "boot_type": "local", \
+  "bootscript": "string", \
+  "organization": "string", \
+  "project": "string", \
+  "tags": [ \
+    "string" \
+  ],
+  "security_group": "string", \
+  "placement_group": "string" \
+}'
+```
+
+</CodesTab>
+
+<CodesTab>
+
+This is how to do it via the CLI
+
+</CodesTab>
+
+</Codes>
 
 <Navigation title="See Also">
   <NextButton to="/compute/instances/how-to/connect-to-instance/">How to connect to an Instance</NextButton>
