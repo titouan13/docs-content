@@ -93,38 +93,53 @@ The following command and request body creates an Instance via the API using `cu
 
 You need to replace `{zone}` in the URL with the desired zone, and the various placeholder values in the payload (`"string"`, `"boolean"` etc) with the desired values, according to the type of Instance you want to create. See the dedicated section of the [API reference](https://developers.scaleway.com/en/products/instance/api/#post-7482b1) for full details.
 
-```json
-
+```bash
 curl -H 'X-Auth-Token: $SECRET_KEY' -H 'Content-Type: application/json' \
 https://api.scaleway.com/instance/v1/zones/{zone}/servers -d \
 '{
-  "name": "string", \
-  "dynamic_ip_required": "boolean", \
-  "commercial_type": "string", \
-  "image": "string", \
-  "volumes": { \
-    "<volumeKey>": { \
-      "id": "string", \
-      "boot": "boolean", \
-      "name": "string", \
-      "size": 42, \
-      "volume_type": "l_ssd", \
-      "base_snapshot": "string", \
-      "organization": "string", \
-      "project": "string" \
-    } \
-  }, \
-  "enable_ipv6": "boolean", \
-  "public_ip": "string", \
-  "boot_type": "local", \
-  "bootscript": "string", \
-  "organization": "string", \
-  "project": "string", \
-  "tags": [ \
-    "string" \
+  "name": "string",
+  "dynamic_ip_required": boolean,
+  "commercial_type": "string",
+  "image": "string",
+  "volumes": {
+    "<volumeKey>": {
+      "id": "string",
+      "boot": boolean,
+      "name": "string",
+      "size": 300000000000,
+      "volume_type": "l_ssd",
+      "base_snapshot": "string",
+      "organization": "string",
+      "project": "string"
+    }
+  },
+  "enable_ipv6": boolean,
+  "public_ip": "string",
+  "boot_type": "local",
+  "bootscript": "string",
+  "organization": "string",
+  "project": "string",
+  "tags": [
+    "string"
   ],
-  "security_group": "string", \
-  "placement_group": "string" \
+  "security_group": "string",
+  "placement_group": "string"
+}'
+```
+
+Here is an example of a complete curl request to create a GP1-S Instance in the `fr-par-1` zone, called "my-instance" running Ubuntu 20.04 Focal Fossa in the Organization `"3ei11278-827c-4c34-8111-0c2576ed921f`. You can see that many of the optional values from the full command above have been omitted:
+
+```bash 
+curl -H "X-Auth-Token: $SECRET_KEY" -H "Content-Type: application/json" https://api.scaleway.com/instance/v1/zones/fr-par-1/servers -d \
+'{
+  "name": "my-instance",
+  "commercial_type": "GP1-S",
+  "image": "881d7a33-4cfa-4046-b5cf-c33cb9c62fb6",
+  "boot_type": "local",
+  "organization": "3ei11278-827c-4c34-8111-0c2576ed921f",
+  "tags": [
+    "my-tag"
+  ]
 }'
 ```
 
