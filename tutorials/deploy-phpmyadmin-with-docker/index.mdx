@@ -1,10 +1,10 @@
 ---
 meta:
   title: Deploying phpMyAdmin with Docker to manage MySQL Databases
-  description: This page shows you how to deploy a phpMyAdmin instance in a few steps using the Docker InstantApp.
+  description: This page shows you how to deploy a phpMyAdmin Instance in a few steps using the Docker InstantApp.
 content:
   h1: Deploying phpMyAdmin with Docker to manage MySQL Databases
-  paragraph: This page shows you how to deploy a phpMyAdmin instance in a few steps using the Docker InstantApp.
+  paragraph: This page shows you how to deploy a phpMyAdmin Instance in a few steps using the Docker InstantApp.
 categories:
   - compute
   - instances
@@ -15,9 +15,9 @@ dates:
 ---
 
 Managing a database can be a complex and laborious part when running a web application. 
-Softwares like phpMyAdmin exist to make the process much lighter. It is a popular administration tool that allows you to access and manage your databases much more easily.
+Software like phpMyAdmin exist to make the process much lighter. It is a popular administration tool that allows you to access and manage your databases much more easily.
 
-In this tutorial you learn how to deploy the tool on a [Instance](https://www.scaleway.com/en/virtual-instances/) using the [Docker](https://www.docker.com/) InstantApp. 
+In this tutorial you will learn how to deploy the tool on an [Instance](https://www.scaleway.com/en/virtual-instances/) using the [Docker](https://www.docker.com/) InstantApp. 
 
 <Message type="requirement">
 
@@ -31,20 +31,20 @@ In this tutorial you learn how to deploy the tool on a [Instance](https://www.sc
 
 1. Click **Instances** in the **Compute** section of the side menu. The Instances overview displays. 
 
-2. Click **+ Create an Instance**. The instance creation wizzard displays.
+2. Click **+ Create an Instance**. The Instance creation wizard displays.
 
 3. Configure your Instance: 
-    * Choose the availability zone.
+    * Choose the Availability Zone.
     * Select the Instance type (in this tutorial we use a [DEV1-S Instance](https://console.scaleway.com/instance/servers/create?area=fr-par-1&imageGroup=distribution_ubuntu&imageKey=c1b530d8-0ca0-45c4-80db-ba06608287b2&region=fr-par-1&selectedImageTab=instantapp&selectedServerGroup=Development&serverKey=fr-par-1DEV1-S))
     * Select the Image for the Instance: Click the **InstantApps** tab and select the **Docker** image.
     * If required, configure storage options
-    * Enter a name for the instance and optionally tags for it
+    * Enter a name for the Instance and optionally, tags for it
 
-4. Click **Create a new Instance** to launch its creation. Once the instance is ready, you are redirected to it's information page.
+4. Click **Create a new Instance** to launch its creation. Once the Instance is ready, you are redirected to its information page.
 
 ## Deploying phpMyAdmin 
 
-1. Connect to your instance using [SSH](/compute/instances/how-to/connect-to-instance):
+1. Connect to your Instance using [SSH](/compute/instances/how-to/connect-to-instance):
 
     ```bash
     ssh root@<your_instance_ip>
