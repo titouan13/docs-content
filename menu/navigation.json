@@ -157,7 +157,7 @@
             "slug": "my-project"
           }
         ],
-        "label": "Console",
+        "label": "Console branch content",
         "slug": "console"
       },
       {
@@ -754,12 +754,8 @@
                     "slug": "connect-function-to-object-storage"
                   },
                   {
-                    "label": "Create and manage an authentication token from the console",
+                    "label": "Create and manage an authentication token from the consolee",
                     "slug": "create-auth-token-from-console"
-                  },
-                  {
-                    "label": "Secure a function",
-                    "slug": "secure-a-function"
                   },
                   {
                     "label": "Delete a function",
@@ -850,10 +846,6 @@
                     "slug": "create-auth-token-from-console"
                   },
                   {
-                    "label": "Secure a container",
-                    "slug": "secure-a-container"
-                  },
-                  {
                     "label": "Delete a container",
                     "slug": "delete-a-container"
                   },
@@ -864,6 +856,16 @@
                 ],
                 "label": "How to",
                 "slug": "how-to"
+              },
+              {
+                "items": [
+                  {
+                    "label": "Uploading with the Serverless.com framework",
+                    "slug": "cont-uploading-with-serverless-framework"
+                  }
+                ],
+                "label": "API/CLI",
+                "slug": "api-cli"
               },
               {
                 "items": [
@@ -928,10 +930,6 @@
                   {
                     "label": "Using Go, Python or NodeJS with SQS",
                     "slug": "python-node-sqs"
-                  },
-                  {
-                    "label": "Using the NATS CLI",
-                    "slug": "nats-cli"
                   }
                 ],
                 "label": "API/CLI",
@@ -1025,10 +1023,6 @@
                   {
                     "label": "Upgrade the Kubernetes version on a Kapsule cluster",
                     "slug": "upgrade-kubernetes-version"
-                  },
-                  {
-                    "label": "Change the Container Runtime Interface of a node pool",
-                    "slug": "change-container-runtime-interface"
                   },
                   {
                     "label": "Delete a cluster",
@@ -1686,7 +1680,7 @@
                     "slug": "unlock-internal-domain"
                   },
                   {
-                    "label": "Manage name servers for an internal domain",
+                    "label": "Manage nameservers of an internal domain",
                     "slug": "manage-nameservers-internal-domain"
                   },
                   {
@@ -1767,16 +1761,6 @@
                 ],
                 "label": "How to",
                 "slug": "how-to"
-              },
-              {
-                "items": [
-                  {
-                    "label": "Configuring the Grafana agent",
-                    "slug": "configuring-grafana-agent"
-                  }
-                ],
-                "label": "API/CLI",
-                "slug": "api-cli"
               }
             ],
             "label": "Cockpit",
