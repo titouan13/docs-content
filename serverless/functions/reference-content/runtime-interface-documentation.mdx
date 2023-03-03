@@ -1,9 +1,9 @@
 ---
 meta:
-  title: Functions runtime interface
+  title: Functions runtime interface documentation
   description: This section contains information about Serverless Function runtime interface documentation.
 content:
-  h1: Functions runtimes interface
+  h1: Functions runtimes interface documentation
   paragraph: This section contains information about Serverless Function runtime documantation.
 tags: functions serverless runtimes information configuration
 dates:
@@ -13,4 +13,24 @@ categories:
   - serverless
 ---
 
-Content.
+Serverless runtimes provide the necessary environment for developing cloud functions. Scaleway Runtimes, for example, are **compatible with Lambda** and support HTTP and CRON `event` types for API Gateway Proxy. In a typical scenario where a user has multiple functions in the same repository and wants to upload them with a single command using a [Serverless Framework](https://github.com/scaleway/serverless-scaleway-functions), we need a way to determine which file (for Python/JavaScript) or package (for Go) to use to execute the functions.
+
+It is worth noting that in some runtimes, such as Python and JavaScript, this `decision` is made at runtime by `importing` the handler, as they are interpreted languages. However, in other runtimes such as Go, this decision is made at compile/build time when the user `deploys` a function, as the package needs to be built.
+
+## Functions Runtime Objects
+
+
+### Event object
+
+With event objects you can pass information through your HTTP request. They are composed of the following objects:
+
+* `pathParameters`: *map(string)string* - Parameters defined in the path of the HTTP Request
+* `queryStringParameters`: *map(string)string* - Query Strings parameters of the HTTP Request
+* `body`: *string|byte()* - Body of the HTTP Request, you will have to parse it in your handler to use it properly.
+* `headers`: *map(string)string* - HTTP Request Headers
+* `method`: *string* - HTTP method used
+* `isBase64Encoded`: *boolean* - Whether the request body is base64 encoded.
+
+## Context object
+
+The `context` object contains technical information about the function. For example: `{"memoryLimitInMb":512,"functionName":"context","functionVersion":""}`

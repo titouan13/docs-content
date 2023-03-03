@@ -852,6 +852,10 @@
                     "slug": "functions-runtimes-configuration"
                   },
                   {
+                    "label": "Functions runtime interface documentation",
+                    "slug": "runtime-interface-documentation"
+                  },
+                  {
                     "label": "Code examples",
                     "slug": "code-examples"
                   }

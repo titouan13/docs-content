@@ -98,32 +98,6 @@ def handle(event, context):
   }
 ```
 
-### Using event objects in Python
-
-With event objects you can pass information through your HTTP request. They are composed of the following objects:
-
-* `pathParameters`: map(string)string - Parameters defined in the path of the HTTP Request
-* `queryStringParameters`: map(string)string - Query Strings parameters of the HTTP Request
-* `body`: string|byte() - Body of the HTTP Request, you will have to parse it in your handler to use it properly.
-* `headers`: map(string)string - HTTP Request Headers
-* `method`: string - HTTP method used
-* `isBase64Encoded`: boolean - Whether the request body is base64 encoded.
-
-```python
-import json
-def handle(event, context):
-  QueryParam = event['queryStringParameters']['parameter']
-  
-  QueryBody = json.loads(event['body']) # if the body is a json
-
-  return {
-      "statusCode": 200,
-      "headers": {
-        "Content-Type": ["application/json"],
-      },
-  }
-```
-
 ### Using data from CRON jobs in Python
 
 CRON jobs share the same pattern as HTTP calls. You can find the information passed into the CRON body in the event object:
@@ -353,36 +327,6 @@ module.exports.myHandler = (event, context, callback) => {
     },
   }
 }
-```
-
-### Using event components
-
-With the event object you can pass information through your HTTP request. It is composed of the following objects:
-
-* `pathParameters`: map(string)string - Parameters defined in the path of the HTTP Request
-* `queryStringParameters`: map(string)string - Query Strings parameters of the HTTP Request
-* `body`: string|byte() - Body of the HTTP Request, you will have to parse it in your handler to use it properly
-* `headers`: map(string)string - HTTP Request Headers
-* `method`: string - HTTP method used
-* `isBase64Encoded`: boolean - Whether the request body is base64 encoded
-
-```js
-module.exports.myHandler = (event, context, callback) => {
-  queryStringParameters = event.queryStringParameters;
-
-  body = event.body;
-
-  return {
-    statusCode: 201,
-    body: JSON.stringify({
-      queryStringParameters: queryStringParameters,
-      body: body,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-};
 ```
 
 ### Using data from CRON jobs in Node
@@ -691,65 +635,6 @@ func main() {
 
 ```
 
-### Using event components (Body, Url …)
-
-With the `APIGatewayProxyRequest` structure, you can pass information through your HTTP request:
-* `Resource`: string - Resource path defined in API Gateway
-* `Path`: string - URL path for the caller
-* `HTTPMethod`: string - HTTP method used
-* `Headers`: map[string]string - HTTP Request Headers
-* `QueryStringParameters`: map[string]string - Query Strings parameters of the HTTP Request
-* `PathParameters`: map[string]string - Parameters defined in the path of the HTTP Request
-* `Body`: string - Body of the HTTP Request, you will have to parse it in your handler to use it properly
-* `IsBase64Encoded`: bool - Whether the request body is base64 encoded
-
-```go
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"github.com/scaleway/scaleway-functions-go/events"
-	"github.com/scaleway/scaleway-functions-go/lambda"
-)
-
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-
-	fmt.Printf("HTTP method = %s.\n", request.HTTPMethod)
-
-	bodySize := len(request.Body)
-	fmt.Printf("Body size = %d.\n", bodySize)
-
-	fmt.Println("Headers:")
-	for key, value := range request.Headers {
-		fmt.Printf("    %s: %s\n", key, value)
-	}
-
-	returnedMessage := "Welcome to Scaleway"
-	if bodySize > 0 {
-		returnedMessage = request.Body
-	}
-
-	response := map[string]interface{}{
-		"message": returnedMessage,
-	}
-
-	responseB, err := json.Marshal(response)
-	if err != nil {
-		return events.APIGatewayProxyResponse{}, err
-	}
-
-	return events.APIGatewayProxyResponse{
-		Body:       string(responseB),
-		StatusCode: 200,
-	}, nil
-}
-
-func main() {
-	lambda.Start(handler)
-}
-```
-
 ### Using data from CRON jobs in Go
 
 ```go
@@ -917,32 +802,6 @@ function handle($event, $context)
         "body" => $env,
         "statusCode" => 200,
     ];
-}
-```
-
-### Using event objects in PHP
-
-With event objects you can pass information through your HTTP request. They are composed of the following objects:
-
-* `pathParameters`: map(string)string - Parameters defined in the path of the HTTP Request
-* `queryStringParameters`: map(string)string - Query Strings parameters of the HTTP Request
-* `body`: string|byte() - Body of the HTTP Request, you will have to parse it in your handler to use it properly.
-* `headers`: map(string)string - HTTP Request Headers
-* `method`: string - HTTP method used
-* `isBase64Encoded`: boolean - Whether the request body is base64 encoded.
-
-```php
-<?php
-function handle($event, $context) {
-  $queryparameter = $event["queryStringParameters"]["parameter"];
-
-  $querybody = $event["body"];
-
-
-  return [
-    "body" => $querybody,
-    "statusCode" => 200,
-	];
 }
 ```
 
