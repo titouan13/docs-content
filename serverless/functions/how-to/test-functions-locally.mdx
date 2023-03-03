@@ -1,0 +1,34 @@
+---
+meta:
+  title: How to test functions locally
+  description: This page explains how to run your functions locally to test them
+content:
+  h1: How to test functions locally
+  paragraph: This page explains how to run your functions locally to test them
+tags: functions secure private
+dates:
+  validation: 2023-03-03
+  posted: 2023-03-03
+categories:
+  - serverless
+---
+
+Offline testing is a crucial challenge faced by current Serverless solutions. In order to ensure the proper functioning of their code or program, users are obliged to upload it online, which can be a time-consuming process.
+
+To address this problem, we are developing language-specific libraries that emulate the Serverless Functions Runtime, providing users with the ability to test their functions offline. By using these libraries, users can save time and resources that would have been spent on online testing.
+
+We provide libraries for Python and Go.
+
+<Macro id="iam-requirements" />
+
+<Message type="requirement">
+  - You have an account and are logged into the [Scaleway console](https://console.scaleway.com)
+  - You have [created a functions namespace](/serverless/functions/how-to/create-a-functions-namespace/)
+  - You have [created a Function](/serverless/functions/how-to/create-a-function/)
+</Message>
+
+## Offline testing using Python
+
+We provide tools for testing your Python handlers for Scaleway Serverless Functions. 
+
+1. Install the framework on your on your local computer using `pip`
