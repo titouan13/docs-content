@@ -5,7 +5,7 @@ meta:
 content:
   h1: How to create Read Replicas
   paragraph: This page explains how to create Read Replicas
-tags: managed-database read-replica read replicas 
+tags: managed-database read-replica read replicas
 dates:
   validation: 2023-03-07
   posted: 2022-09-01
@@ -14,12 +14,12 @@ categories:
   - postgresql-and-mysql
 ---
 
-A Read Replica is a live copy of a Database Instance that behaves like an Instance, but that only allows read-only connections. The replica mirrors the data of the primary Database node and any changes made are replicated to the replica asynchronously. 
+A Read Replica is a live copy of a Database Instance that behaves like an Instance, but that only allows read-only connections. The replica mirrors the data of the primary Database node and any changes made are replicated to the replica asynchronously.
 
-Read replicas allow you to scale your Database Instance for read-heavy database workloads. They can also be used for business intelligence workloads. 
+Read replicas allow you to scale your Database Instance for read-heavy database workloads. They can also be used for business intelligence workloads.
 
 <Macro id="iam-requirements" />
- 
+
 <Message type="requirement">
 
 - You have an account and are logged into the [Scaleway console](https://console.scaleway.com)
@@ -31,32 +31,31 @@ Read replicas allow you to scale your Database Instance for read-heavy database 
 
 1. Click **PostgreSQL and MySQL** under **Managed Databases** on the side menu. A list of your Database Instances displays.
 2. Click the database name or <Icon name="more" /> > **More info** to access the Database Instance information page.
-3. Scroll down to the **Read Replica** section. 
+3. Scroll down to the **Read Replica** section.
 4. Click **Create Read Replica**. A pop-up displays.
+5. Select the Availability Zone (AZ) configuration. Two configurations are available:
+
+    - **Same AZ**: Your Read Replica is hosted in the same AZ as your main Database Instance.
+    - **Multi-AZ**: Your Read Replica is hosted in a different AZ, ensuring the resilience of your Replica.
+
 5. Select the network type. Two types are available:
 
     - **Public Network** - Resources in a public network are publicly visible by default. The default Access Control List (ACL) settings allow anybody to connect to resources in your network. You can restrict access by configuring ACLs in the Allowed IPs section.
-    - **Private Networks** - Private Networks allow you to create virtual Private Networks for your Databases, enabling them to communicate in an isolated network without the need for a public IP address. If you select this option, follow these additional steps:
+    - **Private Networks** - Private Networks allow you to create virtual Private Networks for your Databases, enabling them to communicate in an isolated network without the need for a public IP address. If you select this option, you can either:
       - Select an existing Private Network to attach to your Read Replica.
-      - Configure your IP address and its corresponding mask. 
+      - Create a new Private Network to attach to your Read Replica.
 
   <Message type="important">
-
-  If you select **Public Network**, you can [attach a Private Network](/managed-databases/postgresql-and-mysql/how-to/manage-read-replica/#how-to-manage-private-networks) to your Read Replica after its creation. If you chose to attach your Read Replica to a Private Network, you will not be able to add a Public Network to the same Read Replica later. 
-
+  If you select **Public Network**, you can [attach a Private Network](/managed-databases/postgresql-and-mysql/how-to/manage-read-replica/#how-to-manage-private-networks) to your Read Replica after its creation. If you chose to attach your Read Replica to a Private Network, you will not be able to add a Public Network to the same Read Replica later.
   </Message>
 
   <Message type="note">
-
-  Read replicas can have at most one direct access and one Private Network endpoint.
-
+    Your private IP addresses are automatically allocated. They are managed via an IP Address Manager (IPAM). You can retrieve them on the Private Network tab of your Database Instance. To allocate IPs manually, you can use the Scaleway API and CLI, or Terraform.
   </Message>
 6. Click **Create Read Replica**. A list of your Read Replicas displays.
 
 <Message type="note">
-
   The time it takes to create the Read Replica depends on the volume of the data being replicated.
-
 </Message>
 
 <Navigation title="See Also">
